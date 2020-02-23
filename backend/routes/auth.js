@@ -3,12 +3,10 @@ const router = express.Router();
 const passport = require('passport');
 
 
-router.get('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    session: false,
-  }, async (err, user, info) => {
-    // Todo トークンの払い出しとか
-  })  
-})
+router.post('/', 
+  passport.authenticate('local', { session: false }),
+  (req, res, next) => {
+    res.send('respond with a resource');
+});
 
 module.exports = router;
