@@ -1,0 +1,16 @@
+# @name login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "password"
+}
+
+###
+@authToken = {{login.response.body.token}}
+
+# @name users
+GET http://localhost:3000/users
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
